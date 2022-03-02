@@ -1,5 +1,5 @@
 use std::env;
-use std::io::{self, ErrorKind, Result, Read, Write};
+use std::io::{self, ErrorKind, Read, Result, Write};
 
 const CHUNK_SIZE: usize = 16 * 1024; //16k
 
@@ -20,7 +20,7 @@ fn main() -> Result<()> {
         if !silent {
             eprint!("\r{}", total_bytes);
         }
-    
+
         if let Err(e) = io::stdout().write_all(&buffer[..num_read]) {
             if e.kind() == ErrorKind::BrokenPipe {
                 break;
